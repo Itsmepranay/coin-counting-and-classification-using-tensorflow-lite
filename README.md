@@ -28,6 +28,9 @@ Follow these steps to set up and run the project locally:
    ```bash
    git clone https://github.com/Itsmepranay/coin-counting-and-classification-using-tensorflow-lite
    cd your-repository
-2. **run the flask file (app.py)**
+2. **Install flask**
+   ```bash
+   pip install flask
+3. **Run the flask file (app.py)**
    ```bash
    python app.py
