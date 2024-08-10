@@ -1,0 +1,13 @@
+five 0
+five 1
+five 2
+one 0
+one 1
+one 2
+ten 0
+ten 1
+ten 2
+twenty 0
+two 0
+two 1
+two 2
