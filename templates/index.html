@@ -1,46 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TFLite Detection</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>TFLite Detection</h1>
-    
-    <div class="container">
-        <!-- Image Upload Section -->
-        <div class="section">
-            <h2>Image Detection</h2>
-            <form method="post" enctype="multipart/form-data">
-                <input type="hidden" name="action" value="image_detection">
-                <label for="files">Choose Images:</label>
-                <input type="file" id="files" name="files[]" multiple>
-                <button type="submit">Upload and Run Detection</button>
-            </form>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TFLite Detection</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>TFLite Detection</h1>
+        
+        <div class="container">
+            <!-- Image Upload Section -->
+            <div class="section">
+                <h2>Image Detection</h2>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="image_detection">
+                    <label for="files">Choose Images:</label>
+                    <input type="file" id="files" name="files[]" multiple>
+                    <button type="submit">Upload and Run Detection</button>
+                </form>
 
-            {% if image_output %}
-            <h3>Image Detection Output:</h3>
-            <pre>{{ image_output }}</pre>
-            {% endif %}
+                {% if processed_images %}
+                    <h3>Processed Image:</h3>
+                    <img src="{{ url_for('uploaded_file', filename='_results/' + processed_images[0]) }}" alt="Detected Image">
+                {% endif %}
+            
+
+            </div>
+
+            <!-- Webcam Detection Section -->
+            <div class="section">
+                <h2>Webcam Detection</h2>
+                <h3>Press "Q" to close the webcam window and stop detecting</h3>
+
+                <form method="post">
+                    <input type="hidden" name="action" value="webcam_detection">
+                    <button type="submit">Run Webcam Detection</button>
+                </form>
+
+                {% if webcam_output %}
+                <h3>Webcam Detection Output:</h3>
+                <pre>{{ webcam_output }}</pre>
+                {% endif %}
+            </div>
         </div>
-
-        <!-- Webcam Detection Section -->
-        <div class="section">
-            <h2>Webcam Detection</h2>
-            <h3>Press "Q" to close the webcam window and stop detecting</h3>
-
-            <form method="post">
-                <input type="hidden" name="action" value="webcam_detection">
-                <button type="submit">Run Webcam Detection</button>
-            </form>
-
-            {% if webcam_output %}
-            <h3>Webcam Detection Output:</h3>
-            <pre>{{ webcam_output }}</pre>
-            {% endif %}
-        </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
